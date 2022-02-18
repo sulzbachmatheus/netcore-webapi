@@ -86,7 +86,6 @@ C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi.Tests\bin\Debug\netcorea
 C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
 C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
 C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
-C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi.Tests\obj\Debug\netcoreapp3.1\WebApi.Tests.csprojAssemblyReference.cache
 C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi.Tests\obj\Debug\netcoreapp3.1\WebApi.Tests.AssemblyInfoInputs.cache
 C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi.Tests\obj\Debug\netcoreapp3.1\WebApi.Tests.AssemblyInfo.cs
 C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi.Tests\obj\Debug\netcoreapp3.1\WebApi.Tests.csproj.CoreCompileInputs.cache

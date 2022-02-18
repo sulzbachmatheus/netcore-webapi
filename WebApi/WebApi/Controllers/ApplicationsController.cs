@@ -1,38 +1,42 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using WebApi.Data.Protocols;
+using WebApi.Dto;
 using WebApi.Models;
 
 namespace WebApi.Controllers
-{
-    [ApiController]
-    public abstract class MainController : ControllerBase
-    {
-
-    }
-
+{   
     [Route("[controller]")]
     public class ApplicationsController : MainController
     {
         private readonly IApplicationRepository _applicationRepository;
+        private readonly IApplicationService _applicationService;
+        private readonly IMapper _mapper;
 
-        public ApplicationsController(IApplicationRepository applicationRepository)
+        public ApplicationsController(
+            IApplicationRepository applicationRepository,
+            IApplicationService applicationService,
+            IMapper mapper)
         {
             _applicationRepository = applicationRepository;
+            _applicationService = applicationService;
+            _mapper = mapper;
         }
 
         // GET api/applications
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ApplicationDto>>> Get()
         {
-            return new ObjectResult(await _applicationRepository.GetAllApplications());
+            return new ObjectResult(_mapper.Map<IEnumerable<ApplicationDto>>(await _applicationRepository.GetAllApplications()));
         }
 
         // GET api/applications/1
         [HttpGet("{id}")]
-        public async Task<ActionResult<Application>> Get(int id)
+        public async Task<ActionResult<ApplicationDto>> Get(int id)
         {
-            var app = await _applicationRepository.GetApplication(id);
+            var app = _mapper.Map<ApplicationDto>(await _applicationRepository.GetApplication(id));
             if (app == null)
                 return new NotFoundResult();
 
@@ -41,17 +45,21 @@ namespace WebApi.Controllers
 
         // POST api/applications
         [HttpPost]
-        public async Task<ActionResult<Application>> Post([FromBody] Application app)
+        public async Task<ActionResult<ApplicationDto>> Post([FromBody] ApplicationDto app)
         {
             app.ApplicationId = await _applicationRepository.GetNextId();
-            await _applicationRepository.Create(app);
+            var application = _mapper.Map<Application>(app);
+
+            var result = await _applicationService.Post(application);
+
+            if (!result) return BadRequest();
 
             return new OkObjectResult(app);
         }
 
         // PUT api/applications/1
         [HttpPut("{id}")]
-        public async Task<ActionResult<Application>> Put(int id, [FromBody] Application app)
+        public async Task<ActionResult<ApplicationDto>> Put(int id, [FromBody] Application app)
         {
             var appFromDb = await _applicationRepository.GetApplication(id);
             if (appFromDb == null)
@@ -65,7 +73,7 @@ namespace WebApi.Controllers
 
         // PATCH api/applications/1
         [HttpPatch("{id}")]
-        public async Task<ActionResult<Application>> Patch(int id, [FromBody] Application app)
+        public async Task<ActionResult<ApplicationDto>> Patch(int id, [FromBody] Application app)
         {
             var appFromDb = await _applicationRepository.GetApplication(id);
             if (appFromDb == null)

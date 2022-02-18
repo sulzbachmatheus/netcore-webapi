@@ -3,8 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using WebApi.Config;
-using WebApi.Models;
+using WebApi.Data.Config;
 
 namespace WebApi
 {
@@ -18,14 +17,8 @@ namespace WebApi
         public IConfiguration Configuration { get; }
             
         public void ConfigureServices(IServiceCollection services)
-        {
-            var config = new ServerConfig();
-            Configuration.Bind(config);
-
-            var applicationContext = new ApplicationContext(config.MongoDB);
-
-            var repo = new ApplicationRepository(applicationContext);
-            services.AddSingleton<IApplicationRepository>(repo);
+        {          
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddSwaggerGen(c =>
             {
@@ -38,6 +31,7 @@ namespace WebApi
             });
 
             services.AddControllers();
+            services.ResolveDependencies(Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
