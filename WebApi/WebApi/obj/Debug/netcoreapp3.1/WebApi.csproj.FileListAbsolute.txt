@@ -45,4 +45,5 @@ C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\
 C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
 C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\FluentValidation.dll
 C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\obj\Debug\netcoreapp3.1\WebApi.csprojAssemblyReference.cache

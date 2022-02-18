@@ -1,9 +1,5 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using WebApi.Data.Protocols;
 using WebApi.Models;
 
@@ -33,7 +29,9 @@ namespace WebApi.Services
 
         protected bool ExecuteValidation<TV, TE>(TV validation, TE entity) where TV : AbstractValidator<TE> where TE : Application
         {
-            //
+            var validator = validation.Validate(entity);
+            if (validator.IsValid) return true;
+            Notify(validator);
             return true;
         }
     }

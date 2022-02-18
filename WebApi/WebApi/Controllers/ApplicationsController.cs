@@ -18,7 +18,8 @@ namespace WebApi.Controllers
         public ApplicationsController(
             IApplicationRepository applicationRepository,
             IApplicationService applicationService,
-            IMapper mapper)
+            IMapper mapper,
+            INotifier notifier) : base(notifier)
         {
             _applicationRepository = applicationRepository;
             _applicationService = applicationService;
@@ -45,44 +46,48 @@ namespace WebApi.Controllers
 
         // POST api/applications
         [HttpPost]
-        public async Task<ActionResult<ApplicationDto>> Post([FromBody] ApplicationDto app)
+        public async Task<ActionResult<ApplicationDto>> Post([FromBody] ApplicationDto appDto)
         {
-            app.ApplicationId = await _applicationRepository.GetNextId();
-            var application = _mapper.Map<Application>(app);
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            var result = await _applicationService.Post(application);
+            appDto.ApplicationId = await _applicationRepository.GetNextId();
 
-            if (!result) return BadRequest();
-
-            return new OkObjectResult(app);
+            await _applicationService.Post(_mapper.Map<Application>(appDto));
+            return CustomResponse(appDto);
         }
 
         // PUT api/applications/1
         [HttpPut("{id}")]
-        public async Task<ActionResult<ApplicationDto>> Put(int id, [FromBody] Application app)
+        public async Task<ActionResult<ApplicationDto>> Put(int id, [FromBody] ApplicationDto appDto)
         {
+            if (id != appDto.ApplicationId) return BadRequest();
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
+
             var appFromDb = await _applicationRepository.GetApplication(id);
             if (appFromDb == null)
                 return new NotFoundResult();
 
-            app.ApplicationId = appFromDb.ApplicationId;
-            app.InternalId = appFromDb.InternalId;
-            await _applicationRepository.Update(app);
-            return new OkObjectResult(app);
+            appDto.ApplicationId = appFromDb.ApplicationId;
+            await _applicationService.Put(_mapper.Map<Application>(appDto), appFromDb.InternalId);
+                        
+            return CustomResponse(appDto);
         }
 
         // PATCH api/applications/1
         [HttpPatch("{id}")]
-        public async Task<ActionResult<ApplicationDto>> Patch(int id, [FromBody] Application app)
+        public async Task<ActionResult<ApplicationDto>> Patch(int id, [FromBody] ApplicationDto appDto)
         {
+            if (id != appDto.ApplicationId) return BadRequest();
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
+
             var appFromDb = await _applicationRepository.GetApplication(id);
             if (appFromDb == null)
                 return new NotFoundResult();
 
-            app.ApplicationId = appFromDb.ApplicationId;
-            app.InternalId = appFromDb.InternalId;
-            await _applicationRepository.PartialUpdate(app);
-            return new OkObjectResult(app);
+            appDto.ApplicationId = appFromDb.ApplicationId;
+            await _applicationService.Patch(_mapper.Map<Application>(appDto), appFromDb.InternalId);
+
+            return CustomResponse(appDto);
         }
 
         // DELETE api/applications/1

@@ -10,7 +10,6 @@ namespace WebApi.Data.Models.Validations
             RuleFor(f => f.ApplicationId).NotEmpty();
             RuleFor(f => f.Url).NotEmpty();
             RuleFor(f => f.PathLocal).NotEmpty();
-            RuleFor(f => f.DebuggingMode).NotEmpty();
         }
     }
 }

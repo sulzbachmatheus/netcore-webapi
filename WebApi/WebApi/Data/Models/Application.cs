@@ -5,7 +5,7 @@ namespace WebApi.Models
 {
     
     public class Application
-    {
+    {       
         [BsonId]
         public ObjectId InternalId { get; set; }
         public int ApplicationId { get; set; }

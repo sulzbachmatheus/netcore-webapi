@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using MongoDB.Bson;
+using System.Threading.Tasks;
 using WebApi.Data.Models.Validations;
 using WebApi.Data.Protocols;
 using WebApi.Models;
@@ -28,5 +29,27 @@ namespace WebApi.Services
             await _applicationRepository.Create(app);
             return true;
         }
+
+        public async Task<bool> Put(Application app, ObjectId internalId)
+        {
+            app.InternalId = internalId;
+
+            if (!ExecuteValidation(new ApplicationValidation(), app)) return false;
+
+            await _applicationRepository.Update(app);
+            return true;
+        }
+
+        public async Task<bool> Patch(Application app, ObjectId internalId)
+        {
+            app.InternalId = internalId;
+
+            if (!ExecuteValidation(new ApplicationValidation(), app)) return false;
+
+            await _applicationRepository.PartialUpdate(app);
+            return true;
+        }
+
+        
     }
 }
