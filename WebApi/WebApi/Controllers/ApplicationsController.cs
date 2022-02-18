@@ -6,28 +6,33 @@ using WebApi.Models;
 namespace WebApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class ApplicationsController : ControllerBase
+    public abstract class MainController : ControllerBase
     {
-        private readonly IApplicationRepository _repo;
 
-        public ApplicationsController(IApplicationRepository repo)
+    }
+
+    [Route("[controller]")]
+    public class ApplicationsController : MainController
+    {
+        private readonly IApplicationRepository _applicationRepository;
+
+        public ApplicationsController(IApplicationRepository applicationRepository)
         {
-            _repo = repo;
+            _applicationRepository = applicationRepository;
         }
 
         // GET api/applications
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Application>>> Get()
+        public async Task<ActionResult<IEnumerable<ApplicationDto>>> Get()
         {
-            return new ObjectResult(await _repo.GetAllApplications());
+            return new ObjectResult(await _applicationRepository.GetAllApplications());
         }
 
         // GET api/applications/1
         [HttpGet("{id}")]
         public async Task<ActionResult<Application>> Get(int id)
         {
-            var app = await _repo.GetApplication(id);
+            var app = await _applicationRepository.GetApplication(id);
             if (app == null)
                 return new NotFoundResult();
 
@@ -38,8 +43,9 @@ namespace WebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Application>> Post([FromBody] Application app)
         {
-            app.ApplicationId = await _repo.GetNextId();
-            await _repo.Create(app);
+            app.ApplicationId = await _applicationRepository.GetNextId();
+            await _applicationRepository.Create(app);
+
             return new OkObjectResult(app);
         }
 
@@ -47,13 +53,13 @@ namespace WebApi.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<Application>> Put(int id, [FromBody] Application app)
         {
-            var appFromDb = await _repo.GetApplication(id);
+            var appFromDb = await _applicationRepository.GetApplication(id);
             if (appFromDb == null)
                 return new NotFoundResult();
 
             app.ApplicationId = appFromDb.ApplicationId;
             app.InternalId = appFromDb.InternalId;
-            await _repo.Update(app);
+            await _applicationRepository.Update(app);
             return new OkObjectResult(app);
         }
 
@@ -61,13 +67,13 @@ namespace WebApi.Controllers
         [HttpPatch("{id}")]
         public async Task<ActionResult<Application>> Patch(int id, [FromBody] Application app)
         {
-            var appFromDb = await _repo.GetApplication(id);
+            var appFromDb = await _applicationRepository.GetApplication(id);
             if (appFromDb == null)
                 return new NotFoundResult();
 
             app.ApplicationId = appFromDb.ApplicationId;
             app.InternalId = appFromDb.InternalId;
-            await _repo.PartialUpdate(app);
+            await _applicationRepository.PartialUpdate(app);
             return new OkObjectResult(app);
         }
 
@@ -75,10 +81,11 @@ namespace WebApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var post = await _repo.GetApplication(id);
+            var post = await _applicationRepository.GetApplication(id);
             if (post == null)
                 return new NotFoundResult();
-            await _repo.Delete(id);
+
+            await _applicationRepository.Delete(id);
             return new OkResult();
         }
 
