@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Matheus_Sulzbach\\Desktop\\project\\WebApi\\WebApi\\WebApi.csproj": {}
+    "C:\\Users\\Matheus_Sulzbach\\Desktop\\project\\WebApi\\WebApi.Tests\\WebApi.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Matheus_Sulzbach\\Desktop\\project\\WebApi\\WebApi\\WebApi.csproj": {
+    "C:\\Users\\Matheus_Sulzbach\\Desktop\\project\\WebApi\\WebApi.Tests\\WebApi.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Matheus_Sulzbach\\Desktop\\project\\WebApi\\WebApi\\WebApi.csproj",
-        "projectName": "WebApi",
-        "projectPath": "C:\\Users\\Matheus_Sulzbach\\Desktop\\project\\WebApi\\WebApi\\WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\Matheus_Sulzbach\\Desktop\\project\\WebApi\\WebApi.Tests\\WebApi.Tests.csproj",
+        "projectName": "WebApi.Tests",
+        "projectPath": "C:\\Users\\Matheus_Sulzbach\\Desktop\\project\\WebApi\\WebApi.Tests\\WebApi.Tests.csproj",
         "packagesPath": "C:\\Users\\Matheus_Sulzbach\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Matheus_Sulzbach\\Desktop\\project\\WebApi\\WebApi\\obj\\",
+        "outputPath": "C:\\Users\\Matheus_Sulzbach\\Desktop\\project\\WebApi\\WebApi.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -43,17 +43,21 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+            "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[1.10.9, )"
+              "version": "[16.5.0, )"
             },
-            "MongoDB.Driver": {
+            "coverlet.collector": {
               "target": "Package",
-              "version": "[2.14.1, )"
+              "version": "[1.2.0, )"
             },
-            "Swashbuckle.AspNetCore": {
+            "xunit": {
               "target": "Package",
-              "version": "[6.2.3, )"
+              "version": "[2.4.0, )"
+            },
+            "xunit.runner.visualstudio": {
+              "target": "Package",
+              "version": "[2.4.0, )"
             }
           },
           "imports": [
@@ -67,9 +71,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
