@@ -1,11 +1,8 @@
-using AutoMapper;
 using FluentAssertions;
 using Moq;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebApi.Controllers;
-using WebApi.Data.Protocols;
 using WebApi.Models;
 using Xunit;
 
@@ -14,17 +11,9 @@ namespace WebApi.Tests
     public class ApplicationRepositoryTests
     {
         private readonly Mock<IApplicationRepository> _mockRepo;
-        private readonly Mock<IApplicationService> _mockService;
-        private readonly Mock<IMapper> _mockMapper;
-        private readonly Mock<INotifier> _mockNotifier;
-        private readonly ApplicationsController _controller;
         public ApplicationRepositoryTests()
         {
             _mockRepo = new Mock<IApplicationRepository>();
-            _mockService = new Mock<IApplicationService>();
-            _mockMapper = new Mock<IMapper>();
-            _mockNotifier = new Mock<INotifier>();
-            _controller = new ApplicationsController(_mockRepo.Object, _mockService.Object, _mockMapper.Object, _mockNotifier.Object);
         }
 
         [Fact]

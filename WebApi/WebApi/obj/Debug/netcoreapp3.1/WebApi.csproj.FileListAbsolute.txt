@@ -7,7 +7,13 @@ C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\
 C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\WebApi.runtimeconfig.dev.json
 C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\WebApi.dll
 C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\WebApi.pdb
+C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\DnsClient.dll
+C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\FluentValidation.dll
+C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
 C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
 C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\MongoDB.Bson.dll
 C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\MongoDB.Driver.dll
@@ -40,9 +46,3 @@ C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\obj\Debug\netcoreapp3.1\
 C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\obj\Debug\netcoreapp3.1\WebApi.dll
 C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\obj\Debug\netcoreapp3.1\WebApi.pdb
 C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\obj\Debug\netcoreapp3.1\WebApi.genruntimeconfig.cache
-C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\AutoMapper.dll
-C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
-C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
-C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\bin\Debug\netcoreapp3.1\FluentValidation.dll

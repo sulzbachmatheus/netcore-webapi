@@ -31,7 +31,7 @@ namespace WebApi.Controllers
         public async Task<ActionResult<IEnumerable<ApplicationDto>>> Get()
         {
             var result = await _applicationRepository.GetAllApplications();
-            var response = new ObjectResult(_mapper.Map<IEnumerable<ApplicationDto>>(result));
+            var response = new OkObjectResult(_mapper.Map<IEnumerable<ApplicationDto>>(result));
             return response;
         }
 
@@ -39,11 +39,12 @@ namespace WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ApplicationDto>> Get(int id)
         {
-            var app = _mapper.Map<ApplicationDto>(await _applicationRepository.GetApplication(id));
+            var result = await _applicationRepository.GetApplication(id);
+            var app = _mapper.Map<ApplicationDto>(result);
             if (app == null)
                 return new NotFoundResult();
 
-            return new ObjectResult(app);
+            return new OkObjectResult(app);
         }
 
         // POST api/applications
@@ -94,14 +95,14 @@ namespace WebApi.Controllers
 
         // DELETE api/applications/1
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
             var post = await _applicationRepository.GetApplication(id);
             if (post == null)
                 return new NotFoundResult();
 
             await _applicationRepository.Delete(id);
-            return new OkResult();
+            return new OkObjectResult(id);
         }
 
     }

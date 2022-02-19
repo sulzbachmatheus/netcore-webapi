@@ -24,7 +24,7 @@ namespace WebApi.Controllers
         {
             if (ValidOperation())
             {
-                return Ok(new
+                return Created("api", new
                 {
                     success = true,
                     data = result
