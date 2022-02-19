@@ -30,7 +30,9 @@ namespace WebApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ApplicationDto>>> Get()
         {
-            return new ObjectResult(_mapper.Map<IEnumerable<ApplicationDto>>(await _applicationRepository.GetAllApplications()));
+            var result = await _applicationRepository.GetAllApplications();
+            var response = new ObjectResult(_mapper.Map<IEnumerable<ApplicationDto>>(result));
+            return response;
         }
 
         // GET api/applications/1
