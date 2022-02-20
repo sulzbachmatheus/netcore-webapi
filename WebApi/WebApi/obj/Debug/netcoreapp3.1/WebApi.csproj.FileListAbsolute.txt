@@ -46,3 +46,4 @@ C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\obj\Debug\netcoreapp3.1\
 C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\obj\Debug\netcoreapp3.1\WebApi.dll
 C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\obj\Debug\netcoreapp3.1\WebApi.pdb
 C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\obj\Debug\netcoreapp3.1\WebApi.genruntimeconfig.cache
+C:\Users\Matheus_Sulzbach\Desktop\project\WebApi\WebApi\obj\Debug\netcoreapp3.1\WebApi.csprojAssemblyReference.cache
